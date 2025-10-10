@@ -8,3 +8,4 @@ API_ID = int(environ.get("API_ID", "24670806"))
 API_HASH = environ.get("API_HASH", "82134723a32b2cae76b9cfb3bl570745")
 BOT_TOKEN = environ.get("BOT_TOKEN", "")
 
+
