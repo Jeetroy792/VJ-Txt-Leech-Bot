@@ -55,17 +55,17 @@ async def upload(bot: Client, m: Message):
     path = f"./downloads/{m.chat.id}"
 
     try:
-       with open(x, "r") as f:
-           content = f.read()
-       content = content.split("\n")
-       links = []
-       for i in content:
-           links.append(i.split("://", 1))
-       os.remove(x)
+        with open(x, "r") as f:
+            content = f.read()
+        content = content.split("\n")
+        links = []
+        for i in content:
+            links.append(i.split("://", 1))
+        os.remove(x)
     except:
-           await m.reply_text("**Invalid file input.**")
-           os.remove(x)
-           return
+        await m.reply_text("**Invalid file input.**")
+        os.remove(x)
+        return
     
    
     await editable.edit(f"**𝕋ᴏᴛᴀʟ ʟɪɴᴋ𝕤 ғᴏᴜɴᴅ ᴀʀᴇ🔗🔗** **{len(links)}**\n\n**𝕊ᴇɴᴅ 𝔽ʀᴏᴍ ᴡʜᴇʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴɪᴛɪᴀʟ ɪ𝕤** **1**")
@@ -150,7 +150,6 @@ async def upload(bot: Client, m: Message):
                 id = url.split("/")[-2]
                 url = "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
 
-            # Clean name1 and limit final name length to prevent OS errors
             name1 = re.sub(r'[^\w\s]', '', links[i][0].strip())
             name = f'{str(count).zfill(3)}) {name1[:50]}'.strip()
 
@@ -165,8 +164,8 @@ async def upload(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:  
-                cc = f'**[📽️] Vid_ID:** {str(count).zfill(3)}.** {name1}{MR}.mkv\n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
-                cc1 = f'**[📁] Pdf_ID:** {str(count).zfill(3)}. {name1}{MR}.pdf \n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
+                cc = f'**[📽️] Vid_ID:** {str(count).zfill(3)}.** {name1} {MR}.mkv\n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
+                cc1 = f'**[📁] Pdf_ID:** {str(count).zfill(3)}. {name1} {MR}.pdf \n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
                 
                 if "drive" in url:
                     try:
