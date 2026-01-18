@@ -151,8 +151,11 @@ async def upload(bot: Client, m: Message):
              id =  url.split("/")[-2]
              url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
 
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            name = f'{str(count).zfill(3)}) {name1[:60]}'
+                        # নামের ভিতর থেকে সব ধরণের অবৈধ স্পেশাল ক্যারেক্টার এবং ব্র্যাকেট পরিষ্কার করা
+            name1 = re.sub(r'[^\w\s]', '', links[i][0].strip())
+            
+            # ফাইলের চূড়ান্ত নাম সেট করা (নামের দৈর্ঘ্য ৫০ অক্ষরের মধ্যে রাখা নিরাপদ)
+            name = f'{str(count).zfill(3)}) {name1[:50]}'.strip()
 
             if "youtu" in url:
                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
